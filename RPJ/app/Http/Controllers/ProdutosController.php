@@ -17,8 +17,7 @@ class ProdutosController extends Controller {
         $html .= '</ul>';
         return $html;
     }
-
-    //retorna a view certa, mas a view não acessa a desgraça do css/js que tá na pasta public
+    
     public function home(){
         return view('home');
     }
