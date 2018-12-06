@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\DB;
 use rpj\Model\Produto;
-
+use rpj\dao\ProdutosDAO;
 class ProdutosController extends Controller {
     public function listarProdutos(){
         $html = '<h1>Listagem de Produtos</h1>';
@@ -27,11 +27,8 @@ class ProdutosController extends Controller {
     
     public function home(){
         
-        $prod = new Produto('Galaxy S8', '3000,00', 'Samsung', 'Smartphones', './img/s8.png');
-        $prod2 = new Produto("Macbook Pro 15'", '18000,00', 'Apple', 'Computadores', './img/macbook.png');
-        $prod3 = new Produto('Notebook MSI', '4000,00', 'MSI', 'Computadores', './img/note_msi.png');
-
-        $produtos = [$prod, $prod2, $prod3];
+        $produtosDAO = new ProdutosDAO();
+        $produtos = $produtosDAO->getProdutos();
         
         return view('home')->with('produtos', $produtos);
     }

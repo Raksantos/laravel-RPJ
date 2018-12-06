@@ -41,7 +41,7 @@
                             <select class="input-select">
                                 <option>Todas</option>
                                 <option value="1">Categoria 01</option>
-                                <option value="1">Categoria 02</option>
+                                <option value="2">Categoria 02</option>
                             </select>
                             <input class="input" placeholder="Busque aqui">
                             <button class="search-btn">Buscar</button>
