@@ -1,6 +1,7 @@
 <?php namespace rpj\Model;
 
 class Produto{
+    public $id;
     public $nome;
     public $preco;
     public $marca;
@@ -8,12 +9,13 @@ class Produto{
     public $imagem;
 
     //construtor da classe
-    function __construct($n, $p, $m, $c, $i){
+    function __construct($i, $n, $p, $m, $c, $img){
+        $this->id = $i;
         $this->nome = $n;
         $this->preco = $p;
         $this->marca = $m;
         $this->categoria = $c;
-        $this->imagem  = $i;
+        $this->imagem  = $img;
     }
  
 } ?>

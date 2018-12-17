@@ -1,6 +1,6 @@
 <?php
 
 
-Route::get('/', 'ProdutosController@home');
+Route::get('/', 'HomepageController@home');
 
-Route::get('/produtos', 'ProdutosController@listarProdutos');
+

@@ -150,7 +150,7 @@
 												</div>
 												<img src={{ $p->imagem }} alt="">
 											</div>
-											<div class="product-body">
+											<div class="product-body">												
 												<p class="product-category">{{ $p->categoria }}</p>
 												<h3 class="product-name"><a href="#">{{ $p->nome }}</a></h3>
 												<h4 class="product-price">R${{ $p->preco }}</h4>
