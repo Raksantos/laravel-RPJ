@@ -1,6 +1,9 @@
 <?php namespace rpj\dao;
+
 use rpj\Model\Produto;
+
 class ProdutosDAO{
+    
     public function getProdutos(){
         $prod1 = new Produto(1,'Galaxy S8', '3000,00', 'Samsung', 'Smartphones', './img/s8.png');
         $prod2 = new Produto(2,'Macbook Pro 15" ', '18000,00', 'Apple', 'Computadores', './img/macbook.png');
@@ -12,5 +15,12 @@ class ProdutosDAO{
         $prod7 = new Produto(8,'Macbook Air', '4579,00', 'Apple', 'Computadores', './img/macbookair.png');
         $produtos = [$prod1, $prod2, $prod3, $prod4, $prod5, $prod6, $prod7];
         return $produtos;
+    }
+
+    public function getProdutoById($id){
+        
+        $produto = new Produto($id,'Galaxy S8', '3000,00', 'Samsung', 'Smartphones', './img/s8.png');
+        
+        return $produto;
     }
 }
