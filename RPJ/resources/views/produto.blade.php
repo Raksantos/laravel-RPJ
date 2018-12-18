@@ -53,15 +53,24 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
 							<div class="add-to-cart">
-								<div class="qty-label">
-									Qtd.
-									<div class="input-number">
-										<input type="number" value="1">
-										<span class="qty-up">+</span>
-										<span class="qty-down">-</span>
+								<form action="/adicionarProduto" method="POST">
+									<div class="qty-label">
+										Qtd.
+										<div class="input-number">
+											<input name="quantidade" type="number" value="1">
+											<span class="qty-up">+</span>
+											<span class="qty-down">-</span>
+										</div>
 									</div>
-								</div>
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> adicionar ao carrinho</button>
+									<input hidden="true" name="id" value="{{ $produto->id }}" />
+									<input hidden="true" name="nome" value="{{ $produto->nome }}" />
+									<input hidden="true" name="preco" type="number" value="{{ $produto->preco }}" />
+									<input hidden="true" name="marca" value="{{ $produto->marca }}" />
+									<input hidden="true" name="categoria" value="{{ $produto->categoria }}" />
+									<input hidden="true" name="imagem" value="{{ $produto->imagem }}" />
+									<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+									<button class="add-to-cart-btn" type="submit"><i class="fa fa-shopping-cart"></i> adicionar ao carrinho</button>
+								</form>
 							</div>
 
 							<ul class="product-links">
