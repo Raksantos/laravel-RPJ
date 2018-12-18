@@ -61,7 +61,17 @@
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> <span>adicionar ao carrinho</span></button>
+												<form action="/adicionarProduto" method="POST">
+													<input hidden="true" name="id" value="{{ $p->id }}" />
+													<input hidden="true" name="nome" value="{{ $p->nome }}" />
+													<input hidden="true" name="preco" type="number" value="{{ $p->preco }}" />
+													<input hidden="true" name="marca" value="{{ $p->marca }}" />
+													<input hidden="true" name="categoria" value="{{ $p->categoria }}" />
+													<input hidden="true" name="imagem" value="{{ $p->imagem }}" />
+													<input hidden="true" name="quantidade" type="number" value="1" />
+													<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+													<button class="add-to-cart-btn" type="submit"><i class="fa fa-shopping-cart"></i> <span>adicionar ao carrinho</span></button>
+												</form>
 											</div>
 										</div>
 										<!-- /product -->
