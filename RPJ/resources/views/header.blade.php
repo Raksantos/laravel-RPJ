@@ -79,7 +79,7 @@
                                                     <img src={{ $item->produto->imagem }} alt="">
                                                 </div>
                                                 <div class="product-body">
-                                                    <h3 class="product-name"><a href="#">{{ $item->produto->nome }}</a></h3>
+                                                    <h3 class="product-name"><a href="/produto/{{ $item->produto->id }}">{{ $item->produto->nome }}</a></h3>
                                                     <h4 class="product-price">
                                                         <span class="qty">
                                                             {{ $item->quantidade }}x
@@ -87,7 +87,13 @@
                                                         {{ $item->produto->preco }}
                                                     </h4>
                                                 </div>
-                                                <button class="delete"><i class="fa fa-close"></i></button>
+                                                <form action="/removerProduto" method="POST">
+                                                    <input hidden="true" name="id" value="{{ $item->produto->id }}" />
+                                                    <input hidden="true" name="preco" type="number" value="{{ $item->produto->preco }}" />
+                                                    <input hidden="true" name="quantidade" type="number" value="{{ $item->quantidade }}" />
+                                                    <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                                                    <button class="delete" type="submit"><i class="fa fa-close"></i></button>
+                                                </form>
                                             </div>
                                         @endforeach
                                     </div>

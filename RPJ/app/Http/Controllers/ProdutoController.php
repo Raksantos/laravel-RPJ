@@ -68,4 +68,33 @@ class ProdutoController extends Controller {
 
         return redirect('');
     }
+
+    public function removerDoCarrinho(Request $request){
+        
+        $itens = Session::get('itens');
+        $encontrado = false;
+        forEach($itens as $key => $i){
+            if($i->produto->id == $request->id){
+                $chave = $key;
+                $encontrado = true;
+            }
+        }
+        unset($itens[$chave]);
+        
+        if(isset($itens))
+            Session::put('itens', $itens);
+        else
+            Session::forget('itens');
+
+        $total = Session::get('total');
+        $total -= $request->quantidade * $request->preco;
+
+        $quantidade = Session::get('quantidade');
+        $quantidade -= $request->quantidade;
+        
+        Session::put('total', $total);
+        Session::put('quantidade', $quantidade);
+
+        return redirect('');
+    }
 }
