@@ -47,11 +47,6 @@
                 <div class="col-md-6">
                     <div class="header-search">
                         <form>
-                            <select class="input-select">
-                                <option>Todas</option>
-                                <option value="1">Categoria 01</option>
-                                <option value="2">Categoria 02</option>
-                            </select>
                             <input class="input" placeholder="Busque aqui">
                             <button class="search-btn">Buscar</button>
                         </form>
@@ -68,7 +63,7 @@
                             <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Carrinho</span>
-                                <div class="qty">3</div>
+                                <div class="qty">{{ Session::get('quantidade', 0) }}</div>
                             </a>
                             <div class="cart-dropdown">
                                 @if(Session::has('itens'))
@@ -76,7 +71,7 @@
                                         @foreach(Session::get('itens') as $item)
                                             <div class="product-widget">
                                                 <div class="product-img">
-                                                    <img src={{ $item->produto->imagem }} alt="">
+                                                    <img src="{{ asset($item->produto->imagem) }}" alt="">
                                                 </div>
                                                 <div class="product-body">
                                                     <h3 class="product-name"><a href="/produto/{{ $item->produto->id }}">{{ $item->produto->nome }}</a></h3>
