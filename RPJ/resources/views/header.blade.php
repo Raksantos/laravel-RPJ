@@ -12,7 +12,12 @@
             </ul>
             <ul class="header-links pull-right">
                 <li><a href="#"><i class="fa fa-dollar"></i> R$</a></li>
-                <li><a href="#"><i class="fa fa-user-o"></i> {{$usuario->nome}}</a></li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-user-o"></i>
+                        {{ Cookie::get('user', 'Usuário') }}
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
