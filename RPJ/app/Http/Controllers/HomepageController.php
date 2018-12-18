@@ -5,7 +5,10 @@ use rpj\Model\Usuario;
 use rpj\dao\UsuariosDAO;
 use rpj\Model\Produto;
 use rpj\dao\ProdutosDAO;
+use Cookie;
+
 class HomepageController extends Controller {   
+    
     public function home(){
         
         $usuariosDAO = new UsuariosDAO();
@@ -13,7 +16,9 @@ class HomepageController extends Controller {
         $produtosDAO = new ProdutosDAO();
         $produtos = $produtosDAO->getProdutos();
         
-        return view('home',compact('usuario', 'produtos'));
+        Cookie::queue(Cookie::make('user', $usuario->nome, 600));
+
+        return view('home',compact('produtos'));
     }
 }
 
