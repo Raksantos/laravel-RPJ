@@ -12,13 +12,13 @@ class ProdutoController extends Controller {
     
     public function verProduto($produtoId){
         
-        $usuariosDAO = new UsuariosDAO();
-        $usuario = $usuariosDAO->getUsuarios();
-
         $produtosDAO = new ProdutosDAO();
         $produto = $produtosDAO->getProdutoById($produtoId);
-
-        return view('produto', compact('usuario','produto'));
+        
+        if($produto != null)
+            return view('produto', compact('produto'));
+        else
+            return view('naoencontrado');
     }
 
     public function addCarrinho(Request $request){
@@ -72,11 +72,9 @@ class ProdutoController extends Controller {
     public function removerDoCarrinho(Request $request){
         
         $itens = Session::get('itens');
-        $encontrado = false;
         forEach($itens as $key => $i){
             if($i->produto->id == $request->id){
                 $chave = $key;
-                $encontrado = true;
             }
         }
         unset($itens[$chave]);
