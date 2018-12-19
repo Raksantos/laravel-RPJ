@@ -121,10 +121,10 @@
 								</div>
 							</div>
 						</div>
-						@if(Session::get('quantidade',0) > 0)
+						@if(Session::get('quantidade',0) > 0 && Session::get('user'))
 							<a href="#" class="primary-btn order-submit">Finalizar Pedido</a>
 						@else
-							<a href="#" disabled="true" class="primary-btn order-submit">Finalizar Pedido</a>	
+							<span>Você percisa estar logado e com itens no carrinho para continuar.</span>
 						@endif
 					</div>
 					<!-- /Order Details -->
