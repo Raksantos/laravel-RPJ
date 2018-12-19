@@ -13,14 +13,47 @@
             <ul class="header-links pull-right">
                 <li><a href="#"><i class="fa fa-dollar"></i> R$</a></li>
                 <li>
-                    <a href="#">
-                        <i class="fa fa-user-o"></i>
-                        @if(Session::has('user'))
-                            {{ Session::get('user')->nome }}
-                        @else
-                            Usuário
-                        @endif
-                    </a>
+                    @if(Session::has('user'))
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="true">
+                                <span><i class="fa fa-user-o"></i> {{ Session::get('user')->nome }}</span>
+                            </a>
+                            <div class="cart-dropdown">
+                                <h5>Bem-vindo(a), {{ Session::get('user')->nome }}</h5>
+                                <div class="cart-btns">
+                                    <a style=":hover{color: #FFF; opacity: 0.9}" href="/logout">Sair</a>
+                                    <a style=":hover{color: #FFF; opacity: 0.9}" href="#">Perfil</a>
+                                </div>
+                            </div>
+                        </div>
+                    @else
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="true">
+                                <span><i class="fa fa-user-o"></i> Login</span>
+                            </a>
+                            <div class="cart-dropdown">
+                                <form id="form-login" action="/login" method="POST">
+                                    <div>
+                                        <div class="caption">
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input class="input" type="email" name="email" placeholder="Email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Senha</label>
+                                                <input class="input" type="password" name="senha" placeholder="Senha">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                                    <div class="cart-btns">
+                                        <a style=":hover{color: #FFF; opacity: 0.9}" href="#">Cadastro</a>
+                                        <a style=":hover{color: #FFF; opacity: 0.9}" href="javascript:{}" onclick="document.getElementById('form-login').submit();">Entrar <i class="fa fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    @endif
                 </li>
             </ul>
         </div>
@@ -99,8 +132,8 @@
                                     <h5>SUBTOTAL: R$ {{ Session::get('total', 0) }}</h5>
                                 </div>
                                 <div class="cart-btns">
-                                    <a href="#">Ver carrinho</a>
-                                    <a href="#">Finalizar  <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="/carrinho">Ver carrinho</a>
+                                    <a href="/carrinho">Finalizar  <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
